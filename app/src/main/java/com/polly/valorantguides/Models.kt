@@ -1,30 +1,52 @@
 // Models.kt
 package com.polly.valorantguides.model
 
-data class BuddiesResponse(val data: List<Buddy>)
-data class Buddy(
-    val uuid: String,
-    val displayName: String,
-    val displayIcon: String,
-    val levels: List<BuddyLevel>
+import com.google.gson.annotations.SerializedName
+
+// For Agents
+data class AgentsResponse(
+    @SerializedName("data") val data: List<Agent>
 )
 
-data class BuddyLevel(
-    val uuid: String,
-    val displayName: String,
-    val displayIcon: String
-)
-
-data class AgentsResponse(val data: List<Agent>)
 data class Agent(
-    val uuid: String,
-    val displayName: String,
-    val displayIcon: String
+    @SerializedName("uuid") val uuid: String,
+    @SerializedName("displayName") val displayName: String,
+    @SerializedName("displayIcon") val displayIcon: String,
+    @SerializedName("isHiddenIfNotOwned") val isHiddenIfNotOwned: Boolean
 )
 
-data class WeaponsResponse(val data: List<Weapon>)
+// For Buddies
+data class BuddiesResponse(
+    @SerializedName("data") val data: List<Buddy>
+)
+
+data class Buddy(
+    @SerializedName("uuid") val uuid: String,
+    @SerializedName("displayName") val displayName: String,
+    @SerializedName("isHiddenIfNotOwned") val isHiddenIfNotOwned: Boolean,
+    @SerializedName("displayIcon") val displayIcon: String,
+    @SerializedName("assetPath") val assetPath: String,
+    @SerializedName("levels") val levels: List<Level>
+)
+
+data class Level(
+    @SerializedName("uuid") val uuid: String,
+    @SerializedName("charmLevel") val charmLevel: Int,
+    @SerializedName("hideIfNotOwned") val hideIfNotOwned: Boolean,
+    @SerializedName("displayName") val displayName: String,
+    @SerializedName("displayIcon") val displayIcon: String,
+    @SerializedName("assetPath") val assetPath: String
+)
+
+// For Weapons
+data class WeaponsResponse(
+    @SerializedName("data") val data: List<Weapon>
+)
+
 data class Weapon(
-    val uuid: String,
-    val displayName: String,
-    val displayIcon: String
+    @SerializedName("uuid") val uuid: String,
+    @SerializedName("displayName") val displayName: String,
+    @SerializedName("displayIcon") val displayIcon: String,
+    @SerializedName("isHiddenIfNotOwned") val isHiddenIfNotOwned: Boolean,
+    @SerializedName("assetPath") val assetPath: String
 )

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <Button
+        android:id="@+id/button_agents"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Agents" />
+
+    <Button
+        android:id="@+id/button_buddies"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Buddies"
+        android:layout_below="@id/button_agents"
+        android:layout_marginTop="16dp" />
+
+    <Button
+        android:id="@+id/button_weapons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Weapons"
+        android:layout_below="@id/button_buddies"
+        android:layout_marginTop="16dp" />
+
+</RelativeLayout>

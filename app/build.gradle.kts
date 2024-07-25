@@ -44,16 +44,17 @@ android {
 }
 
 dependencies {
-    implementation(libs.retrofit) // Ensure 'libs.retrofit' is correctly defined in your build script
-    implementation(libs.converter.gson) // Ensure 'libs.converter.gson' is correctly defined in your build script
-    implementation(libs.androidx.core.ktx) // Ensure 'libs.androidx.core.ktx' is correctly defined in your build script
-    implementation(libs.androidx.appcompat) // Ensure 'libs.androidx.appcompat' is correctly defined in your build script
-    implementation(libs.material) // Ensure 'libs.material' is correctly defined in your build script
-    implementation(libs.androidx.activity) // Ensure 'libs.androidx.activity' is correctly defined in your build script
-    implementation(libs.androidx.constraintlayout) // Ensure 'libs.androidx.constraintlayout' is correctly defined in your build script
-    testImplementation(libs.junit) // Ensure 'libs.junit' is correctly defined in your build script
-    androidTestImplementation(libs.androidx.junit) // Ensure 'libs.androidx.junit' is correctly defined in your build script
-    androidTestImplementation(libs.androidx.espresso.core) // Ensure 'libs.androidx.espresso.core' is correctly defined in your build script
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.material)
+    implementation(libs.androidx.activity)
+    implementation(libs.androidx.constraintlayout)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
     implementation(libs.picasso)
     implementation(libs.androidx.recyclerview)
 }
+
