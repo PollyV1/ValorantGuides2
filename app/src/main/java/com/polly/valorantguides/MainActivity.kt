@@ -1,12 +1,11 @@
 // MainActivity.kt
 package com.polly.valorantguides
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.polly.valorantguides.network.RetrofitInstance
 import com.polly.valorantguides.model.Agent
 import com.polly.valorantguides.model.AgentsResponse
@@ -26,17 +25,17 @@ class MainActivity : AppCompatActivity() {
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        // Example: Fetching Agents
+        // Fetch and display agents
         fetchAgents { agents ->
             recyclerView.adapter = AgentAdapter(agents)
         }
 
-        // Example: Fetching Buddies
+        // Fetch and display buddies
         fetchBuddies { buddies ->
             recyclerView.adapter = BuddyAdapter(buddies)
         }
 
-        // Example: Fetching Weapons
+        // Fetch and display weapons
         fetchWeapons { weapons ->
             recyclerView.adapter = WeaponAdapter(weapons)
         }
@@ -89,8 +88,4 @@ class MainActivity : AppCompatActivity() {
             }
         })
     }
-}
-
-private fun <T> Call<T>.enqueue(callback: Callback<BuddiesResponse>) {
-
 }
