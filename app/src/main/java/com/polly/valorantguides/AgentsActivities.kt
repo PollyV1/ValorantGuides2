@@ -1,10 +1,12 @@
+// AgentsActivity.kt
 package com.polly.valorantguides
 
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.polly.valorantguides.databinding.ActivityAgentsBinding
+import androidx.recyclerview.widget.RecyclerView
 import com.polly.valorantguides.model.Agent
 import com.polly.valorantguides.model.AgentsResponse
 import com.polly.valorantguides.network.RetrofitInstance
@@ -13,18 +15,23 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class AgentsActivity : AppCompatActivity() {
-
-    private lateinit var binding: ActivityAgentsBinding
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityAgentsBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_agents)
 
-        binding.recyclerViewAgents.layoutManager = LinearLayoutManager(this)
+        // Set up the toolbar
+        val toolbar: Toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        toolbar.setNavigationOnClickListener {
+            onBackPressed()
+        }
+
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewAgents)
+        recyclerView.layoutManager = LinearLayoutManager(this)
 
         fetchAgents { agents ->
-            binding.recyclerViewAgents.adapter = AgentAdapter(agents)
+            recyclerView.adapter = AgentAdapter(agents)
         }
     }
 

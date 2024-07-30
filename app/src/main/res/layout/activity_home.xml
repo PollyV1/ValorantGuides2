@@ -1,29 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:orientation="vertical"
+    tools:context=".HomeActivity">
 
-    <Button
-        android:id="@+id/button_agents"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Agents" />
+    <!-- AppBar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:title="Valorant Guides" />
 
-    <Button
-        android:id="@+id/button_buddies"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Buddies"
-        android:layout_below="@id/button_agents"
-        android:layout_marginTop="16dp" />
+    <!-- GridLayout for buttons -->
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="16dp"
+        android:alignmentMode="alignMargins"
+        android:columnCount="2"
+        android:columnOrderPreserved="false"
+        android:rowCount="2">
 
-    <Button
-        android:id="@+id/button_weapons"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Weapons"
-        android:layout_below="@id/button_buddies"
-        android:layout_marginTop="16dp" />
+        <Button
+            android:id="@+id/button_agents"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_margin="8dp"
+            android:text="Agents" />
 
-</RelativeLayout>
+        <Button
+            android:id="@+id/button_buddies"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_margin="8dp"
+            android:text="Buddies" />
+
+        <Button
+            android:id="@+id/button_weapons"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_margin="8dp"
+            android:text="Weapons" />
+
+    </GridLayout>
+
+</LinearLayout>

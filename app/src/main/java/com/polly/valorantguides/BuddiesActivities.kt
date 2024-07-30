@@ -1,10 +1,12 @@
+// BuddiesActivity.kt
 package com.polly.valorantguides
 
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.polly.valorantguides.databinding.ActivityBuddiesBinding
+import androidx.recyclerview.widget.RecyclerView
 import com.polly.valorantguides.model.Buddy
 import com.polly.valorantguides.model.BuddiesResponse
 import com.polly.valorantguides.network.RetrofitInstance
@@ -13,18 +15,23 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class BuddiesActivity : AppCompatActivity() {
-
-    private lateinit var binding: ActivityBuddiesBinding
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityBuddiesBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_buddies)
 
-        binding.recyclerViewBuddies.layoutManager = LinearLayoutManager(this)
+        // Set up the toolbar
+        val toolbar: Toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        toolbar.setNavigationOnClickListener {
+            onBackPressed()
+        }
+
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewBuddies)
+        recyclerView.layoutManager = LinearLayoutManager(this)
 
         fetchBuddies { buddies ->
-            binding.recyclerViewBuddies.adapter = BuddyAdapter(buddies)
+            recyclerView.adapter = BuddyAdapter(buddies)
         }
     }
 
