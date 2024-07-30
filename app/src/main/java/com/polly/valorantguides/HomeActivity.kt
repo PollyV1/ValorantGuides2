@@ -15,11 +15,11 @@ class HomeActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.buttonAgents.setOnClickListener {
-            startActivity(Intent(this, AgentsActivity::class.java))
+            startActivity(Intent(this, AgentsActivities::class.java))
         }
 
         binding.buttonBuddies.setOnClickListener {
-            startActivity(Intent(this, BuddiesActivity::class.java))
+            startActivity(Intent(this, BuddiesActivities::class.java))
         }
 
         binding.buttonWeapons.setOnClickListener {

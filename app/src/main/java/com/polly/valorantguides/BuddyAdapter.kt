@@ -3,15 +3,17 @@ package com.polly.valorantguides
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.polly.valorantguides.databinding.BuddyItemBinding
+import com.polly.valorantguides.databinding.ItemBuddyBinding
 import com.polly.valorantguides.model.Buddy
 import com.squareup.picasso.Picasso
 
-class BuddyAdapter(private val buddies: List<Buddy>) :
-    RecyclerView.Adapter<BuddyAdapter.BuddyViewHolder>() {
+class BuddyAdapter(
+    private val buddies: List<Buddy>,
+    private val onItemClick: (Buddy) -> Unit // Changed from (Any) -> Unit to (Buddy) -> Unit
+) : RecyclerView.Adapter<BuddyAdapter.BuddyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BuddyViewHolder {
-        val binding = BuddyItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemBuddyBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return BuddyViewHolder(binding)
     }
 
@@ -22,10 +24,17 @@ class BuddyAdapter(private val buddies: List<Buddy>) :
 
     override fun getItemCount(): Int = buddies.size
 
-    class BuddyViewHolder(private val binding: BuddyItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class BuddyViewHolder(private val binding: ItemBuddyBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(buddy: Buddy) {
-            binding.buddyName.text = buddy.displayName
-            Picasso.get().load(buddy.displayIcon).into(binding.buddyIcon)
+            binding.textViewBuddyName.text = buddy.displayName
+            Picasso.get()
+                .load(buddy.displayIcon)
+                .into(binding.imageViewBuddyIcon)
+
+            // Handle item click
+            binding.root.setOnClickListener {
+                onItemClick(buddy)
+            }
         }
     }
 }

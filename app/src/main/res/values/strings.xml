@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">ValorantGuides</string>
+<<<<<<< Updated upstream
     <string name="weapon_icon" />
+=======
+    <string name="agent_icon_description">Agent icon</string>
+    <string name="buddy_icon_description">Buddy icon</string>
+    <string name="weapon_icon_description">Weapon icon</string>
+    <string name="back">Back to Homepage</string>
+>>>>>>> Stashed changes
 </resources>
